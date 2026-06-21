@@ -3,471 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manohar Royal Restaurant & Daba</title>
-    <!-- Ultra-Premium Luxury Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Marcellus&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Manohar Family Restaurant & Daba</title>
     <style>
         :root {
-            --royal-gold: linear-gradient(135deg, #f3e7c4 0%, #e5c158 50%, #aa8214 100%);
+            --royal-gold: linear-gradient(135deg, #f3e7c4 0%, #e5c158 50%, #aa771c 100%);
             --gold-text: #e5c158;
             --gold-light: #fff4d4;
             --deep-black: #08090c;
-            --premium-card: rgba(22, 25, 34, 0.7);
-            --gold-border: rgba(229, 193, 88, 0.35);
+            --premium-card: rgba(22, 25, 34, 0.85);
+            --gold-border: rgba(229, 193, 88, 0.25);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--deep-black);
-            background-image: radial-gradient(circle at 50% 0%, #161a24 0%, #08090c 80%);
-            color: #f1f5f9;
-            overflow-x: hidden;
-        }
-
-        /* --- ROYAL INTRO SPLASH SCREEN --- */
-        #welcome-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #08090c;
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: var(--deep-black); color: #fff; padding: 12px; }
+        .menu-container { max-width: 600px; margin: auto; padding-bottom: 60px; }
+        
+        .header { text-align: center; margin: 15px 0 25px 0; border-bottom: 2px solid #e5c158; padding-bottom: 15px; }
+        .restaurant-name { font-size: 24px; font-weight: bold; color: var(--gold-text); text-transform: uppercase; letter-spacing: 1px; }
+        .tagline { font-size: 13px; color: #a4a9b5; margin-top: 5px; font-weight: bold; }
+        
+        .table-badge { text-align: center; background: var(--royal-gold); color: #000; padding: 8px; font-weight: bold; border-radius: 6px; margin-bottom: 20px; font-size: 16px; display: none; }
+        
+        .category-title { color: var(--gold-text); font-size: 19px; margin: 30px 0 15px 0; border-left: 4px solid #e5c158; padding-left: 10px; font-weight: bold; text-transform: uppercase; }
+        
+        .menu-item { background: var(--premium-card); border: 1px solid var(--gold-border); padding: 14px; margin-bottom: 12px; border-radius: 10px; }
+        .item-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .item-name { font-size: 16px; font-weight: bold; color: var(--gold-light); }
+        .item-price { color: var(--gold-text); font-size: 16px; font-weight: bold; }
+        
+        .whatsapp-btn {
             display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: all 1.2s cubic-bezier(0.85, 0, 0.15, 1);
-        }
-
-        .welcome-geometry {
-            position: relative;
-            padding: 80px 60px;
+            background-color: #25D366;
+            color: white;
             text-align: center;
-            background: linear-gradient(135deg, rgba(20,24,33,0.9) 0%, rgba(10,11,15,0.95) 100%);
-            border: 1px solid var(--gold-border);
-            box-shadow: 0 30px 70px rgba(0,0,0,0.8), inset 0 0 40px rgba(229, 193, 88, 0.08);
-            max-width: 700px;
-            width: 90%;
-        }
-
-        /* Royal Corner Ornaments */
-        .corner {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            border: 3px solid #e5c158;
-        }
-        .top-left { top: 20px; left: 20px; border-right: 0; border-bottom: 0; }
-        .top-right { top: 20px; right: 20px; border-left: 0; border-bottom: 0; }
-        .bottom-left { bottom: 20px; left: 20px; border-right: 0; border-top: 0; }
-        .bottom-right { bottom: 20px; right: 20px; border-left: 0; border-top: 0; }
-
-        .royal-crest {
-            font-family: 'Cinzel', serif;
-            font-weight: 300;
-            color: var(--gold-text);
-            font-size: 14px;
-            letter-spacing: 10px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-
-        .rest-title {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 54px;
-            background: var(--royal-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .rest-subtitle {
-            font-family: 'Marcellus', serif;
-            font-size: 14px;
-            color: #94a3b8;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 50px;
-        }
-
-        .luxury-btn {
-            font-family: 'Cinzel', serif;
-            font-weight: 600;
-            background: transparent;
-            color: var(--gold-text);
-            border: 1px solid var(--gold-text);
-            padding: 16px 45px;
-            font-size: 14px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
+            padding: 9px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 13px;
+            border: none;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
+            width: 100%;
         }
-
-        .luxury-btn:hover {
-            color: #000;
-            background: var(--royal-gold);
-            box-shadow: 0 0 30px rgba(229, 193, 88, 0.4);
-            border-color: transparent;
-        }
-
-        /* --- MAIN PREMIUM INTERFACE --- */
-        #main-content {
-            display: none;
-            opacity: 0;
-            transition: opacity 1.2s ease-in;
-        }
-
-        header {
-            text-align: center;
-            padding: 100px 20px 60px;
-            position: relative;
-        }
-
-        header::after {
-            content: '❖';
-            color: var(--gold-text);
-            display: block;
-            margin-top: 20px;
-            font-size: 18px;
-            letter-spacing: 0;
-        }
-
-        header h1 {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 44px;
-            background: var(--royal-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 4px;
-        }
-
-        header p {
-            font-family: 'Marcellus', serif;
-            color: #94a3b8;
-            letter-spacing: 4px;
-            font-size: 13px;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        .header-contacts {
-            font-size: 13px;
-            color: var(--gold-text);
-            margin-top: 15px;
-            font-weight: 500;
-            letter-spacing: 2px;
-        }
-
-        /* --- PREMIUM MENU LUXURY CARDS --- */
-        .menu-wrapper {
-            max-width: 1200px;
-            margin: 40px auto 100px;
-            padding: 0 25px;
-        }
-
-        .menu-section {
-            background: var(--premium-card);
-            border: 1px solid var(--gold-border);
-            border-radius: 8px;
-            padding: 45px;
-            margin-bottom: 50px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .section-header {
-            font-family: 'Cinzel', serif;
-            color: var(--gold-text);
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 35px;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-header::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, var(--gold-border), transparent);
-            margin-left: 20px;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
-            gap: 25px 50px;
-        }
-
-        @media (max-width: 768px) {
-            .grid-container { grid-template-columns: 1fr; }
-            .menu-section { padding: 30px 20px; }
-            .rest-title { font-size: 38px; }
-            header h1 { font-size: 32px; }
-        }
-
-        .menu-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.02);
-            border-left: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .menu-row:hover {
-            background: rgba(229, 193, 88, 0.05);
-            border-left-color: var(--gold-text);
-            transform: translateX(5px);
-        }
-
-        .dish-name {
-            font-size: 15px;
-            color: #e2e8f0;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .menu-row:hover .dish-name {
-            color: var(--gold-light);
-        }
-
-        .dish-price {
-            font-family: 'Marcellus', serif;
-            color: var(--gold-text);
-            font-weight: 600;
-            font-size: 17px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px;
-            color: #64748b;
-            font-size: 12px;
-            letter-spacing: 2px;
-            border-top: 1px solid var(--gold-border);
-            font-family: 'Marcellus', serif;
-        }
+        .whatsapp-btn:hover { background-color: #128C7E; }
     </style>
 </head>
 <body>
 
-    <!-- LUXURY SPLASH SCREEN -->
-    <div id="welcome-screen">
-        <div class="welcome-geometry">
-            <div class="corner top-left"></div>
-            <div class="corner top-right"></div>
-            <div class="corner bottom-left"></div>
-            <div class="corner bottom-right"></div>
-            
-            <div class="royal-crest">The Fine Dine Experience</div>
-            <div class="rest-title">Manohar</div>
-            <div class="rest-subtitle">Family Restaurant & Daba</div>
-            <button class="luxury-btn" onclick="openMenu()">Enter Palace Menu</button>
-        </div>
+<div class="menu-container">
+    <div class="header">
+        <div class="restaurant-name">Manohar Family Restaurant & Daba</div>
+        <div class="tagline">VEG & NON VEG | INDIAN | CHINESE | TANDOORI</div>
     </div>
+    
+    <div id="table-display" class="table-badge"></div>
 
-    <!-- MAIN INTERFACE -->
-    <div id="main-content">
-        <header>
-            <h1>MANOHAR RESTAURANT & DABA</h1>
-            <p>Veg & Non Veg Specialties • Indian | Chinese | Tandoori</p>
-            <div class="header-contacts">RESERVATIONS & ORDERS: 📞 9959544287 | 8309686838</div>
-        </header>
+    <!-- MANDI SPL BIRTANI -->
+    <div class="category-title">👑 Mandi Spl Biryani</div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Full Mandi</span><span class="item-price">₹1199</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Full Mandi', '1199')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Half Mandi</span><span class="item-price">₹699</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Half Mandi', '699')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Jambo Mandi</span><span class="item-price">₹1499</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Jambo Mandi', '1499')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mutton Roasted Mandi</span><span class="item-price">₹1900</span></div><button class="whatsapp-btn" onclick="sendOrder('Mutton Roasted Mandi', '1900')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mixed Half Mandi</span><span class="item-price">₹899</span></div><button class="whatsapp-btn" onclick="sendOrder('Mixed Half Mandi', '899')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mixed Full Mandi</span><span class="item-price">₹1699</span></div><button class="whatsapp-btn" onclick="sendOrder('Mixed Full Mandi', '1699')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mixed Jumbo Mandi</span><span class="item-price">₹1899</span></div><button class="whatsapp-btn" onclick="sendOrder('Mixed Jumbo Mandi', '1899')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Wings Mandi</span><span class="item-price">₹699</span></div><button class="whatsapp-btn" onclick="sendOrder('Wings Mandi', '699')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Fish Full Mandi</span><span class="item-price">₹1400</span></div><button class="whatsapp-btn" onclick="sendOrder('Fish Full Mandi', '1400')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Fish Half Mandi</span><span class="item-price">₹799</span></div><button class="whatsapp-btn" onclick="sendOrder('Fish Half Mandi', '799')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Prawns Full Mandi</span><span class="item-price">₹1799</span></div><button class="whatsapp-btn" onclick="sendOrder('Prawns Full Mandi', '1799')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Prawns Half Mandi</span><span class="item-price">₹899</span></div><button class="whatsapp-btn" onclick="sendOrder('Prawns Half Mandi', '899')">📱 Order via WhatsApp</button></div>
 
-        <div class="menu-wrapper">
+    <!-- BIRIYANI -->
+    <div class="category-title">🍛 Biryani Specialities</div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Full Biryani</span><span class="item-price">₹300</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Full Biryani', '300')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Dum Biryani</span><span class="item-price">₹240</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Dum Biryani', '240')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Fry Biryani</span><span class="item-price">₹240</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Fry Biryani', '240')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mini Fry Biryani</span><span class="item-price">₹180</span></div><button class="whatsapp-btn" onclick="sendOrder('Mini Fry Biryani', '180')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mughali Biryani</span><span class="item-price">₹310</span></div><button class="whatsapp-btn" onclick="sendOrder('Mughali Biryani', '310')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Lollipop Biryani</span><span class="item-price">₹320</span></div><button class="whatsapp-btn" onclick="sendOrder('Lollipop Biryani', '320')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">SPL Chicken Biryani</span><span class="item-price">₹310</span></div><button class="whatsapp-btn" onclick="sendOrder('SPL Chicken Biryani', '310')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">SPL Prawn Biryani</span><span class="item-price">₹350</span></div><button class="whatsapp-btn" onclick="sendOrder('SPL Prawn Biryani', '350')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Prawn Biryani</span><span class="item-price">₹310</span></div><button class="whatsapp-btn" onclick="sendOrder('Prawn Biryani', '310')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Fish Biryani</span><span class="item-price">₹320</span></div><button class="whatsapp-btn" onclick="sendOrder('Fish Biryani', '320')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Egg Biryani</span><span class="item-price">₹220</span></div><button class="whatsapp-btn" onclick="sendOrder('Egg Biryani', '220')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mutton Biryani</span><span class="item-price">₹380</span></div><button class="whatsapp-btn" onclick="sendOrder('Mutton Biryani', '380')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Non Veg Mixed Biryani</span><span class="item-price">₹380</span></div><button class="whatsapp-btn" onclick="sendOrder('Non Veg Mixed Biryani', '380')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Veg Biryani</span><span class="item-price">₹210</span></div><button class="whatsapp-btn" onclick="sendOrder('Veg Biryani', '210')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Manohar Spl Biryani</span><span class="item-price">₹330</span></div><button class="whatsapp-btn" onclick="sendOrder('Manohar Spl Biryani', '330')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kabab Biryani</span><span class="item-price">₹320</span></div><button class="whatsapp-btn" onclick="sendOrder('Kabab Biryani', '320')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Tikka Biryani</span><span class="item-price">₹350</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Tikka Biryani', '350')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mutton Kheema Biryani</span><span class="item-price">₹400</span></div><button class="whatsapp-btn" onclick="sendOrder('Mutton Kheema Biryani', '400')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Tandoori Biryani</span><span class="item-price">₹320</span></div><button class="whatsapp-btn" onclick="sendOrder('Tandoori Biryani', '320')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mushroom Biryani</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Mushroom Biryani', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Paneer Biryani</span><span class="item-price">₹260</span></div><button class="whatsapp-btn" onclick="sendOrder('Paneer Biryani', '260')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Saajan Biryani</span><span class="item-price">₹330</span></div><button class="whatsapp-btn" onclick="sendOrder('Saajan Biryani', '330')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Plain Biryani</span><span class="item-price">₹150</span></div><button class="whatsapp-btn" onclick="sendOrder('Plain Biryani', '150')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Spl Veg Biryani</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Spl Veg Biryani', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Koohinoor Biryani</span><span class="item-price">₹330</span></div><button class="whatsapp-btn" onclick="sendOrder('Koohinoor Biryani', '330')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Dil Kush Biryani</span><span class="item-price">₹330</span></div><button class="whatsapp-btn" onclick="sendOrder('Dil Kush Biryani', '330')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Triple Fry Biryani</span><span class="item-price">₹330</span></div><button class="whatsapp-btn" onclick="sendOrder('Triple Fry Biryani', '330')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Potlam Biryani</span><span class="item-price">₹320</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Potlam Biryani', '320')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Gongura Chicken Biryani</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Gongura Chicken Biryani', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Ulavacharu Biryani</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Ulavacharu Biryani', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Avakai Chicken Biryani</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Avakai Chicken Biryani', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Joint Biryani</span><span class="item-price">₹320</span></div><button class="whatsapp-btn" onclick="sendOrder('Joint Biryani', '320')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Single Kabab Biryani</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Single Kabab Biryani', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mixed Potlam Biryani</span><span class="item-price">₹350</span></div><button class="whatsapp-btn" onclick="sendOrder('Mixed Potlam Biryani', '350')">📱 Order via WhatsApp</button></div>
 
-            <!-- CHICKEN STARTERS -->
-            <div class="menu-section">
-                <div class="section-header">Elite Chicken Starters</div>
-                <div class="grid-container">
-                    <div class="menu-row"><span class="dish-name">Chilly Chicken</span><span class="dish-price">₹240</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken 65</span><span class="dish-price">₹240</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Manchuria</span><span class="dish-price">₹240</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken 555</span><span class="dish-price">₹290</span></div>
-                    <div class="menu-row"><span class="dish-name">Garlic Chicken</span><span class="dish-price">₹290</span></div>
-                    <div class="menu-row"><span class="dish-name">Ginger Chicken</span><span class="dish-price">₹290</span></div>
-                    <div class="menu-row"><span class="dish-name">Lemon Chicken</span><span class="dish-price">₹290</span></div>
-                    <div class="menu-row"><span class="dish-name">Boneless Chicken Roast</span><span class="dish-price">₹290</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Drumstick</span><span class="dish-price">₹300</span></div>
-                    <div class="menu-row"><span class="dish-name">Pepper Chicken</span><span class="dish-price">₹290</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Lollypop (4 Pcs)</span><span class="dish-price">₹280</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Majestic</span><span class="dish-price">₹290</span></div>
-                    <div class="menu-row"><span class="dish-name">Dragon Chicken</span><span class="dish-price">₹300</span></div>
-                    <div class="menu-row"><span class="dish-name">Tandoori Chicken (Full)</span><span class="dish-price">₹550</span></div>
-                    <div class="menu-row"><span class="dish-name">Tandoori Chicken (Half)</span><span class="dish-price">₹300</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Tikka Kabab</span><span class="dish-price">₹290</span></div>
-                    <div class="menu-row"><span class="dish-name">Achari Kabab</span><span class="dish-price">₹300</span></div>
-                    <div class="menu-row"><span class="dish-name">Malai Kabab</span><span class="dish-price">₹320</span></div>
-                    <div class="menu-row"><span class="dish-name">Hariyali Kabab</span><span class="dish-price">₹290</span></div>
-                    <div class="menu-row"><span class="dish-name">Kalami Kabab (4 Pcs)</span><span class="dish-price">₹340</span></div>
-                    <div class="menu-row"><span class="dish-name">Tangidi Kabab (3 Pcs)</span><span class="dish-price">₹330</span></div>
-                </div>
-            </div>
+    <!-- CHICKEN STARTERS -->
+    <div class="category-title">🍗 Chicken Starters</div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chilly Chicken</span><span class="item-price">₹240</span></div><button class="whatsapp-btn" onclick="sendOrder('Chilly Chicken', '240')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken 65</span><span class="item-price">₹240</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken 65', '240')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Manchuria</span><span class="item-price">₹240</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Manchuria', '240')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken 555</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken 555', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken 78</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken 78', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Boneless Chicken Roast</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Boneless Chicken Roast', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Pepper Chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Pepper Chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kaju Chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Kaju Chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Rajadhani Chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Rajadhani Chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Fry (Bone)</span><span class="item-price">₹230</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Fry (Bone)', '230')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Fry Bone Less</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Fry Bone Less', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Dragon Chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Dragon Chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Pakodi</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Pakodi', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Lollipops</span><span class="item-price">₹280</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Lollipops', '280')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Wings</span><span class="item-price">₹280</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Wings', '280')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Tikka</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Tikka', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Crispy Chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Crispy Chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Garlic Chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Garlic Chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kalami Kabab (4 Pcs)</span><span class="item-price">₹340</span></div><button class="whatsapp-btn" onclick="sendOrder('Kalami Kabab (4 Pcs)', '340')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kalam Kabab (2 Pcs)</span><span class="item-price">₹180</span></div><button class="whatsapp-btn" onclick="sendOrder('Kalam Kabab (2 Pcs)', '180')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Lemon Chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Lemon Chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Tandoori Chicken (Full)</span><span class="item-price">₹550</span></div><button class="whatsapp-btn" onclick="sendOrder('Tandoori Chicken (Full)', '550')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Tandoori Chicken (Mini)</span><span class="item-price">₹280</span></div><button class="whatsapp-btn" onclick="sendOrder('Tandoori Chicken (Mini)', '280')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Drumsticks</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Drumsticks', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Sangrilla</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Sangrilla', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Rajali Kabab</span><span class="item-price">₹350</span></div><button class="whatsapp-btn" onclick="sendOrder('Rajali Kabab', '350')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Tandoori Wings</span><span class="item-price">₹330</span></div><button class="whatsapp-btn" onclick="sendOrder('Tandoori Wings', '330')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken 8885</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken 8885', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kakinada Gee Rost</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Kakinada Gee Rost', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Joint</span><span class="item-price">₹160</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Joint', '160')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Malasia Chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Malasia Chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Ginger chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Ginger chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken megistick</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken megistick', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken hongkong</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken hongkong', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken 555/85</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken 555/85', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Papper chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Papper chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken casew nut chicken</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken casew nut chicken', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken springroll</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken springroll', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken pakodi (Bone/Boneless)</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken pakodi (Bone/Boneless)', '290')">📱 Order via WhatsApp</button></div>
 
-            <!-- NON-VEG STARTERS (FISH, PRAWNS, MUTTON) -->
-            <div class="menu-section">
-                <div class="section-header">Seafood & Mutton Starters</div>
-                <div class="grid-container">
-                    <div class="menu-row"><span class="dish-name">Apollo Fish</span><span class="dish-price">₹330</span></div>
-                    <div class="menu-row"><span class="dish-name">Chilly Fish</span><span class="dish-price">₹320</span></div>
-                    <div class="menu-row"><span class="dish-name">Fish Manchuria</span><span class="dish-price">₹320</span></div>
-                    <div class="menu-row"><span class="dish-name">Fish Fry (Andhra Style)</span><span class="dish-price">₹310</span></div>
-                    <div class="menu-row"><span class="dish-name">Chilly Prawns</span><span class="dish-price">₹330</span></div>
-                    <div class="menu-row"><span class="dish-name">Prawns 65</span><span class="dish-price">₹330</span></div>
-                    <div class="menu-row"><span class="dish-name">Prawns Manchuria</span><span class="dish-price">₹330</span></div>
-                    <div class="menu-row"><span class="dish-name">Prawns Fry</span><span class="dish-price">₹320</span></div>
-                    <div class="menu-row"><span class="dish-name">Mutton Fry</span><span class="dish-price">₹360</span></div>
-                    <div class="menu-row"><span class="dish-name">Mutton Keema Balls</span><span class="dish-price">₹350</span></div>
-                    <div class="menu-row"><span class="dish-name">Egg Chilli</span><span class="dish-price">₹150</span></div>
-                    <div class="menu-row"><span class="dish-name">Egg 65</span><span class="dish-price">₹150</span></div>
-                    <div class="menu-row"><span class="dish-name">Egg Manchuria</span><span class="dish-price">₹150</span></div>
-                    <div class="menu-row"><span class="dish-name">Egg Boiled (2)</span><span class="dish-price">₹30</span></div>
-                    <div class="menu-row"><span class="dish-name">Egg Omelette</span><span class="dish-price">₹50</span></div>
-                </div>
-            </div>
+    <!-- MAIN COURSE (NON-VEG CURRIES) -->
+    <div class="category-title">🍛 Non-Veg Curries</div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kadai Chicken</span><span class="item-price">₹230</span></div><button class="whatsapp-btn" onclick="sendOrder('Kadai Chicken', '230')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Kheema</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Kheema', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Fish Curry</span><span class="item-price">₹280</span></div><button class="whatsapp-btn" onclick="sendOrder('Fish Curry', '280')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Fish Curry (Mini)</span><span class="item-price">₹160</span></div><button class="whatsapp-btn" onclick="sendOrder('Fish Curry (Mini)', '160')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Fish Fry</span><span class="item-price">₹280</span></div><button class="whatsapp-btn" onclick="sendOrder('Fish Fry', '280')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Fish Fry (Mini)</span><span class="item-price">₹160</span></div><button class="whatsapp-btn" onclick="sendOrder('Fish Fry (Mini)', '160')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Fish Curry (Boneless)</span><span class="item-price">₹280</span></div><button class="whatsapp-btn" onclick="sendOrder('Fish Curry (Boneless)', '280')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mutton Curry</span><span class="item-price">₹380</span></div><button class="whatsapp-btn" onclick="sendOrder('Mutton Curry', '380')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mutton Fry</span><span class="item-price">₹380</span></div><button class="whatsapp-btn" onclick="sendOrder('Mutton Fry', '380')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Prawns Curry</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Prawns Curry', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Prawns Fry</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Prawns Fry', '290')">📱 Order via WhatsApp</button></div>
 
-            <!-- BIRIYANI SELECTIONS -->
-            <div class="menu-section">
-                <div class="section-header">Royal Biryani Heritage</div>
-                <div class="grid-container">
-                    <div class="menu-row"><span class="dish-name">Chicken Full Biriyani</span><span class="dish-price">₹300</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Dum Biriyani</span><span class="dish-price">₹240</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Fry Biriyani</span><span class="dish-price">₹240</span></div>
-                    <div class="menu-row"><span class="dish-name">Mini Fry Biriyani</span><span class="dish-price">₹180</span></div>
-                    <div class="menu-row"><span class="dish-name">Mughali Biriyani</span><span class="dish-price">₹310</span></div>
-                    <div class="menu-row"><span class="dish-name">Lollypop Biriyani</span><span class="dish-price">₹320</span></div>
-                    <div class="menu-row"><span class="dish-name">SPL Chicken Biriyani</span><span class="dish-price">₹310</span></div>
-                    <div class="menu-row"><span class="dish-name">SPL Prawn Biriyani</span><span class="dish-price">₹350</span></div>
-                    <div class="menu-row"><span class="dish-name">Prawn Biriyani</span><span class="dish-price">₹310</span></div>
-                    <div class="menu-row"><span class="dish-name">Fish Biriyani</span><span class="dish-price">₹320</span></div>
-                    <div class="menu-row"><span class="dish-name">Mutton Biriyani</span><span class="dish-price">₹380</span></div>
-                    <div class="menu-row"><span class="dish-name">Manohar Spl Biriyani</span><span class="dish-price">₹330</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Potlam Biriyani</span><span class="dish-price">₹320</span></div>
-                    <div class="menu-row"><span class="dish-name">Mixed Biriyani (Spl)</span><span class="dish-price">₹350</span></div>
-                    <div class="menu-row"><span class="dish-name">Egg Biriyani</span><span class="dish-price">₹180</span></div>
-                    <div class="menu-row"><span class="dish-name">Kaju Biriyani</span><span class="dish-price">₹260</span></div>
-                    <div class="menu-row"><span class="dish-name">Veg Biriyani</span><span class="dish-price">₹180</span></div>
-                    <div class="menu-row"><span class="dish-name">Paneer Biriyani</span><span class="dish-price">₹230</span></div>
-                    <div class="menu-row"><span class="dish-name">Mushroom Biriyani</span><span class="dish-price">₹230</span></div>
-                </div>
-            </div>
+    <!-- EGG CURRYS -->
+    <div class="category-title">🍳 Egg Specialities</div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Egg Curry (2)</span><span class="item-price">₹90</span></div><button class="whatsapp-btn" onclick="sendOrder('Egg Curry (2)', '90')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Egg Kheema</span><span class="item-price">₹160</span></div><button class="whatsapp-btn" onclick="sendOrder('Egg Kheema', '160')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Egg Thadka</span><span class="item-price">₹160</span></div><button class="whatsapp-btn" onclick="sendOrder('Egg Thadka', '160')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Omlett</span><span class="item-price">₹60</span></div><button class="whatsapp-btn" onclick="sendOrder('Omlett', '60')">📱 Order via WhatsApp</button></div>
 
-            <!-- MANDI SPECIALS -->
-            <div class="menu-section">
-                <div class="section-header">Premium Mandi Platters</div>
-                <div class="grid-container">
-                    <div class="menu-row"><span class="dish-name">Chicken Full Mandi</span><span class="dish-price">₹1199</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Half Mandi</span><span class="dish-price">₹699</span></div>
-                    <div class="menu-row"><span class="dish-name">Mutton Roasted Mandi</span><span class="dish-price">₹1900</span></div>
-                    <div class="menu-row"><span class="dish-name">Mixed Full Mandi</span><span class="dish-price">₹1699</span></div>
-                    <div class="menu-row"><span class="dish-name">Mixed Jumbo Mandi</span><span class="dish-price">₹1899</span></div>
-                    <div class="menu-row"><span class="dish-name">Prawns Full Mandi</span><span class="dish-price">₹1799</span></div>
-                </div>
-            </div>
+    <!-- SPL VEG CURRYS -->
+    <div class="category-title">🥦 Special Veg Curries</div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mixed Veg Curry</span><span class="item-price">₹180</span></div><button class="whatsapp-btn" onclick="sendOrder('Mixed Veg Curry', '180')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kaju Tomato</span><span class="item-price">₹230</span></div><button class="whatsapp-btn" onclick="sendOrder('Kaju Tomato', '230')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kaju Mushroom</span><span class="item-price">₹240</span></div><button class="whatsapp-btn" onclick="sendOrder('Kaju Mushroom', '240')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kaju Masala</span><span class="item-price">₹230</span></div><button class="whatsapp-btn" onclick="sendOrder('Kaju Masala', '230')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Paneer Butter Masala</span><span class="item-price">₹230</span></div><button class="whatsapp-btn" onclick="sendOrder('Paneer Butter Masala', '230')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kaju Paneer</span><span class="item-price">₹240</span></div><button class="whatsapp-btn" onclick="sendOrder('Kaju Paneer', '240')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kadai Paneer</span><span class="item-price">₹230</span></div><button class="whatsapp-btn" onclick="sendOrder('Kadai Paneer', '230')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Palak Paneer</span><span class="item-price">₹230</span></div><button class="whatsapp-btn" onclick="sendOrder('Palak Paneer', '230')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mushroom Curry</span><span class="item-price">₹230</span></div><button class="whatsapp-btn" onclick="sendOrder('Mushroom Curry', '230')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Baby Corn Curry</span><span class="item-price">₹230</span></div><button class="whatsapp-btn" onclick="sendOrder('Baby Corn Curry', '230')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kadai Veg</span><span class="item-price">₹180</span></div><button class="whatsapp-btn" onclick="sendOrder('Kadai Veg', '180')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Dal Fry</span><span class="item-price">₹120</span></div><button class="whatsapp-btn" onclick="sendOrder('Dal Fry', '120')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Dal Thadaka</span><span class="item-price">₹120</span></div><button class="whatsapp-btn" onclick="sendOrder('Dal Thadaka', '120')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Alu Gobi</span><span class="item-price">₹180</span></div><button class="whatsapp-btn" onclick="sendOrder('Alu Gobi', '180')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Methi Chaman</span><span class="item-price">₹240</span></div><button class="whatsapp-btn" onclick="sendOrder('Methi Chaman', '240')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kaju Baby Corn</span><span class="item-price">₹240</span></div><button class="whatsapp-btn" onclick="sendOrder('Kaju Baby Corn', '240')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Green Peas Masala</span><span class="item-price">₹180</span></div><button class="whatsapp-btn" onclick="sendOrder('Green Peas Masala', '180')">📱 Order via WhatsApp</button></div>
 
-            <!-- MAIN COURSE CURRIES (NON-VEG) -->
-            <div class="menu-section">
-                <div class="section-header">Gourmet Non-Veg Curries</div>
-                <div class="grid-container">
-                    <div class="menu-row"><span class="dish-name">Chicken Curry (Andhra Style)</span><span class="dish-price">₹230</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Fry (Andhra Style)</span><span class="dish-price">₹240</span></div>
-                    <div class="menu-row"><span class="dish-name">Butter Chicken</span><span class="dish-price">₹260</span></div>
-                    <div class="menu-row"><span class="dish-name">Mughalali Chicken Curry</span><span class="dish-price">₹250</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Tikka Masala</span><span class="dish-price">₹250</span></div>
-                    <div class="menu-row"><span class="dish-name">Kadai Chicken</span><span class="dish-price">₹230</span></div>
-                    <div class="menu-row"><span class="dish-name">Methi Chicken</span><span class="dish-price">₹240</span></div>
-                    <div class="menu-row"><span class="dish-name">Mutton Curry</span><span class="dish-price">₹340</span></div>
-                    <div class="menu-row"><span class="dish-name">Fish Curry</span><span class="dish-price">₹280</span></div>
-                    <div class="menu-row"><span class="dish-name">Prawns Curry</span><span class="dish-price">₹310</span></div>
-                    <div class="menu-row"><span class="dish-name">Egg Masala Curry</span><span class="dish-price">₹130</span></div>
-                </div>
-            </div>
+    <!-- BREADS -->
+    <div class="category-title">🫓 Tandoori Roti & Breads</div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Pulka</span><span class="item-price">₹15</span></div><button class="whatsapp-btn" onclick="sendOrder('Pulka', '15')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Thandoori Roti</span><span class="item-price">₹40</span></div><button class="whatsapp-btn" onclick="sendOrder('Thandoori Roti', '40')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Butter Roti</span><span class="item-price">₹45</span></div><button class="whatsapp-btn" onclick="sendOrder('Butter Roti', '45')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Butter Pulka</span><span class="item-price">₹20</span></div><button class="whatsapp-btn" onclick="sendOrder('Butter Pulka', '20')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Plain Naan</span><span class="item-price">₹45</span></div><button class="whatsapp-btn" onclick="sendOrder('Plain Naan', '45')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Butter Naan</span><span class="item-price">₹50</span></div><button class="whatsapp-btn" onclick="sendOrder('Butter Naan', '50')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Garlic Naan</span><span class="item-price">₹90</span></div><button class="whatsapp-btn" onclick="sendOrder('Garlic Naan', '90')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Stuffed Kulcha</span><span class="item-price">₹90</span></div><button class="whatsapp-btn" onclick="sendOrder('Stuffed Kulcha', '90')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Panner Kulcha</span><span class="item-price">₹90</span></div><button class="whatsapp-btn" onclick="sendOrder('Panner Kulcha', '90')">📱 Order via WhatsApp</button></div>
 
-            <!-- ROTI & NAAN -->
-            <div class="menu-section">
-                <div class="section-header">Indian Breads & Tandoor</div>
-                <div class="grid-container">
-                    <div class="menu-row"><span class="dish-name">Roti</span><span class="dish-price">₹20</span></div>
-                    <div class="menu-row"><span class="dish-name">Butter Roti</span><span class="dish-price">₹25</span></div>
-                    <div class="menu-row"><span class="dish-name">Naan</span><span class="dish-price">₹35</span></div>
-                    <div class="menu-row"><span class="dish-name">Butter Naan</span><span class="dish-price">₹45</span></div>
-                    <div class="menu-row"><span class="dish-name">Garlic Naan</span><span class="dish-price">₹60</span></div>
-                    <div class="menu-row"><span class="dish-name">Rumali Roti</span><span class="dish-price">₹25</span></div>
-                    <div class="menu-row"><span class="dish-name">Pulka</span><span class="dish-price">₹15</span></div>
-                </div>
-            </div>
+    <!-- FRIED RICE & SCHEZWAN -->
+    <div class="category-title">🍚 Chinese Fried Rice</div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Veg Fried Rice</span><span class="item-price">₹170</span></div><button class="whatsapp-btn" onclick="sendOrder('Veg Fried Rice', '170')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Egg Fried Rice</span><span class="item-price">₹190</span></div><button class="whatsapp-btn" onclick="sendOrder('Egg Fried Rice', '190')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Fried Rice</span><span class="item-price">₹210</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Fried Rice', '210')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Spl Chicken Fried Rice</span><span class="item-price">₹310</span></div><button class="whatsapp-btn" onclick="sendOrder('Spl Chicken Fried Rice', '310')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Spl Veg Fried Rice</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Spl Veg Fried Rice', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Kaju Fried Rice</span><span class="item-price">₹260</span></div><button class="whatsapp-btn" onclick="sendOrder('Kaju Fried Rice', '260')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Spl Panner Fried Rice</span><span class="item-price">₹330</span></div><button class="whatsapp-btn" onclick="sendOrder('Spl Panner Fried Rice', '330')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Panner Fried Rice</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Panner Fried Rice', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Prawns Fried Rice</span><span class="item-price">₹290</span></div><button class="whatsapp-btn" onclick="sendOrder('Prawns Fried Rice', '290')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Spl Prawns Fried Rice</span><span class="item-price">₹350</span></div><button class="whatsapp-btn" onclick="sendOrder('Spl Prawns Fried Rice', '350')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Spl Egg Fried Rice</span><span class="item-price">₹280</span></div><button class="whatsapp-btn" onclick="sendOrder('Spl Egg Fried Rice', '280')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Jeera Rice</span><span class="item-price">₹180</span></div><button class="whatsapp-btn" onclick="sendOrder('Jeera Rice', '180')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mix Veg Schezwan Fried Rice</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Mix Veg Schezwan Fried Rice', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Non Veg Mix Schezwan Fried Rice</span><span class="item-price">₹340</span></div><button class="whatsapp-btn" onclick="sendOrder('Non Veg Mix Schezwan Fried Rice', '340')">📱 Order via WhatsApp</button></div>
 
-            <!-- FRIED RICE & NOODLES -->
-            <div class="menu-section">
-                <div class="section-header">Rice & Noodles Wok</div>
-                <div class="grid-container">
-                    <div class="menu-row"><span class="dish-name">Veg Fried Rice / Noodles</span><span class="dish-price">₹130</span></div>
-                    <div class="menu-row"><span class="dish-name">Egg Fried Rice / Noodles</span><span class="dish-price">₹140</span></div>
-                    <div class="menu-row"><span class="dish-name">Chicken Fried Rice / Noodles</span><span class="dish-price">₹180</span></div>
-                    <div class="menu-row"><span class="dish-name">Schzwan Chicken Fried Rice</span><span class="dish-price">₹190</span></div>
-                    <div class="menu-row"><span class="dish-name">Jeera Rice</span><span class="dish-price">₹140</span></div>
-                    <div class="menu-row"><span class="dish-name">Kaju Fried Rice</span><span class="dish-price">₹220</span></div>
-                </div>
-            </div>
+    <!-- NOODLES -->
+    <div class="category-title">🍜 Noodles & Rice Meals</div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Veg Soft Noodles</span><span class="item-price">₹150</span></div><button class="whatsapp-btn" onclick="sendOrder('Veg Soft Noodles', '150')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Egg Noodles</span><span class="item-price">₹150</span></div><button class="whatsapp-btn" onclick="sendOrder('Egg Noodles', '150')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Chicken Noodles</span><span class="item-price">₹190</span></div><button class="whatsapp-btn" onclick="sendOrder('Chicken Noodles', '190')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Mixed Noodles</span><span class="item-price">₹250</span></div><button class="whatsapp-btn" onclick="sendOrder('Mixed Noodles', '250')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Curd Rice</span><span class="item-price">₹100</span></div><button class="whatsapp-btn" onclick="sendOrder('Curd Rice', '100')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Fruit Curd Rice</span><span class="item-price">₹180</span></div><button class="whatsapp-btn" onclick="sendOrder('Fruit Curd Rice', '180')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Veg Meals</span><span class="item-price">₹100</span></div><button class="whatsapp-btn" onclick="sendOrder('Veg Meals', '100')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Special Veg Meals</span><span class="item-price">₹150</span></div><button class="whatsapp-btn" onclick="sendOrder('Special Veg Meals', '150')">📱 Order via WhatsApp</button></div>
 
-            <!-- VEG STARTERS & CURRIES -->
-            <div class="menu-section">
-                <div class="section-header">Exquisite Vegetarian Selection</div>
-                <div class="grid-container">
-                    <div class="menu-row"><span class="dish-name">Veg Manchuria</span><span class="dish-price">₹190</span></div>
-                    <div class="menu-row"><span class="dish-name">Chilly Paneer</span><span class="dish-price">₹230</span></div>
-                    <div class="menu-row"><span class="dish-name">Paneer 65</span><span class="dish-price">₹230</span></div>
-                    <div class="menu-row"><span class="dish-name">Chilly Mushroom</span><span class="dish-price">₹210</span></div>
-                    <div class="menu-row"><span class="dish-name">Mushroom 65</span><span class="dish-price">₹210</span></div>
-                    <div class="menu-row"><span class="dish-name">Paneer Butter Masala</span><span class="dish-price">₹230</span></div>
-                    <div class="menu-row"><span class="dish-name">Kaju Mushroom Curry</span><span class="dish-price">₹240</span></div>
-                    <div class="menu-row"><span class="dish-name">Kaju Paneer Curry</span><span class="dish-price">₹250</span></div>
-                    <div class="menu-row"><span class="dish-name">Mix Veg Curry</span><span class="dish-price">₹180</span></div>
-                    <div class="menu-row"><span class="dish-name">Dal Tadka</span><span class="dish-price">₹120</span></div>
-                    <div class="menu-row"><span class="dish-name">Dal Fry</span><span class="dish-price">₹110</span></div>
-                </div>
-            </div>
+    <!-- BEVERAGES -->
+    <div class="category-title">🥤 Beverages</div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Butter Milk</span><span class="item-price">₹50</span></div><button class="whatsapp-btn" onclick="sendOrder('Butter Milk', '50')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Lassi</span><span class="item-price">₹80</span></div><button class="whatsapp-btn" onclick="sendOrder('Lassi', '80')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Water Bottle 1 Ltr</span><span class="item-price">₹20</span></div><button class="whatsapp-btn" onclick="sendOrder('Water Bottle 1 Ltr', '20')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Soda</span><span class="item-price">₹20</span></div><button class="whatsapp-btn" onclick="sendOrder('Soda', '20')">📱 Order via WhatsApp</button></div>
+    <div class="menu-item"><div class="item-info"><span class="item-name">Thumsup/Sprite 300 Ml</span><span class="item-price">₹25</span></div><button class="whatsapp-btn" onclick="sendOrder('Thumsup/Sprite 300 Ml', '25')">📱 Order via WhatsApp</button></div>
+</div>
 
-        </div>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const tableNumber = urlParams.get('table') || "Not Specified";
 
-        <footer>
-            <p>// MANOHAR ROYAL LUXURY PORTFOLIO © 2026 //</p>
-        </footer>
-    </div>
+    if(urlParams.get('table')) {
+        const badge = document.getElementById('table-display');
+        badge.innerText = "🪑 Table Number: " + tableNumber;
+        badge.style.display = "block";
+    }
 
-    <script>
-        function openMenu() {
-            const screen = document.getElementById('welcome-screen');
-            const content = document.getElementById('main-content');
-            
-            screen.style.opacity = '0';
-            screen.style.transform = 'scale(1.05) translateY(-20px)';
-            
-            setTimeout(() => {
-                screen.style.display = 'none';
-                content.style.display = 'block';
-                setTimeout(() => {
-                    content.style.opacity = '1';
-                }, 50);
-            }, 1200);
-        }
-    </script>
+    function sendOrder(itemName, price) {
+        const myWhatsAppNumber = "919959312891"; 
+        const message = `Hello Manohar Restaurant,%0A%0AI want to order following item:%0A📌 *Item:* ${itemName}%0A💰 *Price:* ₹${price}%0A🪑 *Table No:* ${tableNumber}`;
+        const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+    }
+</script>
+
 </body>
 </html>
